@@ -17,6 +17,7 @@ class Dunning(metaclass=PoolMeta):
 
         res = dict((d.id, None) for d in dunnings)
         for dunning in dunnings:
-            if dunning.line and dunning.line.move_origin and isinstance(dunning.line.move_origin, Invoice):
+            if (dunning.line and dunning.line.move_origin
+                    and isinstance(dunning.line.move_origin, Invoice)):
                 res[dunning.id] = dunning.line.move_origin.id
         return res
